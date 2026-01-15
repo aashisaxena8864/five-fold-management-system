@@ -1,0 +1,44 @@
+{% extends "student/dashboard/base_dashboard.html" %}
+{% load static %}
+
+{% block body_class %}
+hide-top-nav hide-global-sidebar
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="feedback-layout">
+
+  <!-- LEFT BLUE SIDEBAR -->
+  <aside class="feedback-sidebar">
+    <a href="{% url 'student:admin_dashboard' %}" class="back-link">
+      ← Back to Dashboard
+    </a>
+
+    <h2 class="sidebar-title">Feedback</h2>
+
+    <input type="text" class="search-box" placeholder="Search activity...">
+
+    <nav class="fold-list">
+      <a href="{% url 'student:feedback_by_fold' 'physical' %}">Physical</a>
+      <a href="{% url 'student:feedback_by_fold' 'aesthetic' %}">Aesthetic</a>
+      <a href="{% url 'student:feedback_by_fold' 'practical' %}">Practical</a>
+      <a href="{% url 'student:feedback_by_fold' 'moral' %}">Moral</a>
+      <a href="{% url 'student:feedback_by_fold' 'intellectual' %}">Intellectual</a>
+    </nav>
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <main class="feedback-content">
+    {% block feedback_content %}{% endblock %}
+  </main>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/feedback.js' %}"></script>
+{% endblock %}

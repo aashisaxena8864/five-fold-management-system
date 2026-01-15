@@ -1,0 +1,30 @@
+{% extends "student/dashboard/feedback/base_feedback.html" %}
+
+{% block feedback_content %}
+
+<h2 class="feedback-title">{{ selected_fold }} Feedback</h2>
+<p class="feedback-subtitle">
+  Feedback submitted by students for {{ selected_fold }} Education
+</p>
+
+{% for fb in feedbacks %}
+  <div class="feedback-card">
+    <h3 class="activity-title">{{ fb.title }}</h3>
+    <div class="feedback-header">
+      <strong>Rating: ⭐ {{ fb.rating }} / 5</strong>
+      <span class="feedback-date">{{ fb.date }}</span>
+    </div>
+
+    <p class="feedback-text">{{ fb.text }}</p>
+
+    <form method="post" class="reply-box">
+      {% csrf_token %}
+      <textarea placeholder="Write your response..."></textarea>
+      <button type="submit">Respond</button>
+    </form>
+  </div>
+{% empty %}
+  <p>Please select fold of Feedback</p>
+{% endfor %}
+
+{% endblock %}

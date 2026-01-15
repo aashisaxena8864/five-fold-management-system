@@ -1,0 +1,25 @@
+{% extends "student/dashboard/students/base_students.html" %}
+
+{% block students_content %}
+
+<h2 class="page-title">Activity Participation</h2>
+
+<div class="participation-list">
+    {% for item in participation %}
+    <div class="participation-row">
+
+        <span class="label">{{ item.name }}</span>
+
+        <div class="bar">
+            <div class="fill"
+                 style="width: {{ item.count }}px; background-color: {{ item.color }};">
+            </div>
+        </div>
+
+        <span class="count">{{ item.count }}</span>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

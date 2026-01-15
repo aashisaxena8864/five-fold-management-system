@@ -1,0 +1,159 @@
+.hide-global-sidebar .top-nav,
+.hide-global-sidebar .sidebar {
+  display: none !important;
+}
+
+.hide-global-sidebar .wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.hide-global-sidebar .main {
+  margin: 0;
+  padding: 0;
+}
+.faculty-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.faculty-sidebar a {
+    display: block;
+    padding: 8px 0;
+    color: #e5e7eb;
+    text-decoration: none;
+}
+
+.sidebar-title {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.sidebar-subtitle {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #c7d2fe;
+}
+
+.sidebar-divider {
+    margin: 16px 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* SIDEBAR */
+.faculty-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #020024, #090979, #020024);
+  color: #fff;
+  padding: 20px;
+}
+
+.faculty-sidebar a {
+  display: block;
+  color: #cbd5ff;
+  padding: 8px 0;
+  text-decoration: none;
+}
+
+.faculty-sidebar a:hover {
+  color: #fff;
+}
+
+.sidebar-back {
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.sidebar-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.highlight-link {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* CONTENT */
+.faculty-content {
+  flex: 1;
+  padding: 40px;
+  background: #f8fafc;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+/* TABLE */
+.data-table {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* FORM */
+.assign-form {
+  max-width: 400px;
+}
+
+.assign-form label {
+  display: block;
+  margin-top: 15px;
+}
+
+.assign-form input,
+.assign-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.assign-form button {
+  margin-top: 20px;
+  padding: 10px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* WORKLOAD */
+.workload-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.workload-bar {
+  flex: 1;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 5px;
+}
+
+.workload-bar .fill {
+  height: 100%;
+  background: #22c55e;
+  border-radius: 5px;
+}
+
+/* LIST */
+.simple-list li {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}

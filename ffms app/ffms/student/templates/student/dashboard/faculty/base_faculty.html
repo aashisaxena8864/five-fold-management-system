@@ -1,0 +1,22 @@
+{% extends "student/dashboard/base_dashboard.html" %}
+{% load static %}
+
+{% block body_class %}
+hide-top-nav hide-global-sidebar
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="faculty-layout">
+
+    {% include "student/dashboard/faculty/sidebar_faculty.html" %}
+
+    <main class="faculty-content">
+        {% block faculty_content %}{% endblock %}
+    </main>
+
+</div>
+{% endblock %}

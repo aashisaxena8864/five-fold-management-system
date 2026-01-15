@@ -1,0 +1,66 @@
+<aside class="students-sidebar">
+
+  <!-- BACK -->
+  <a href="{% url 'student:admin_dashboard' %}" class="sidebar-back">
+    ← Back to Dashboard
+  </a>
+
+  <h3 class="sidebar-title">Five Fold Activities</h3>
+
+  <!-- PHYSICAL -->
+  <div class="fold-group">
+    <p class="fold-title">Physical</p>
+    <a href="{% url 'student:students_by_activity' 'physical' 'basketball' %}">
+      Basketball
+    </a>
+    <a href="{% url 'student:students_by_activity' 'physical' 'yoga' %}">
+      Yoga
+    </a>
+  </div>
+
+  <!-- AESTHETIC -->
+  <div class="fold-group">
+    <p class="fold-title">Aesthetic</p>
+    <a href="{% url 'student:students_by_activity' 'aesthetic' 'guitar' %}">
+      Guitar
+    </a>
+    <a href="{% url 'student:students_by_activity' 'aesthetic' 'block_painting' %}">
+      Block Painting
+    </a>
+  </div>
+
+  <!-- PRACTICAL -->
+  <div class="fold-group">
+    <p class="fold-title">Practical</p>
+    <a href="{% url 'student:students_by_activity' 'practical' 'craft' %}">
+      Craft
+    </a>
+    <a href="{% url 'student:students_by_activity' 'practical' 'embroidery' %}">
+      Embroidery
+    </a>
+  </div>
+
+  <!-- MORAL -->
+  <div class="fold-group">
+    <p class="fold-title">Moral</p>
+    <a href="{% url 'student:students_by_activity' 'moral' 'prayer' %}">
+      Prayer
+    </a>
+  </div>
+
+  <!-- INTELLECTUAL -->
+  <div class="fold-group">
+    <p class="fold-title">Intellectual</p>
+    <a href="{% url 'student:students_by_activity' 'intellectual' 'women_empowerment' %}">
+      Projects
+    </a>
+  </div>
+
+  <hr>
+
+  <a class="participation-link"
+     href="{% url 'student:activity_participation' %}">
+    📊 Activity Participation
+  </a>
+
+</aside>

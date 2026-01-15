@@ -1,0 +1,15 @@
+{% extends "student/notifications/base_notifications.html" %}
+
+{% block notification_content %}
+<h2>Compose Notification</h2>
+
+<form class="compose-form">
+    <label>Title</label>
+    <input type="text">
+
+    <label>Message</label>
+    <textarea rows="6"></textarea>
+
+    <button class="btn primary">Send Notification</button>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "student/dashboard/faculty/base_faculty.html" %}
+
+{% block faculty_content %}
+<h2>All Faculty</h2>
+
+<table class="data-table">
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Activity</th>
+        <th>Email</th>
+    </tr>
+
+    {% for f in faculty %}
+    <tr>
+        <td>{{ f.name }}</td>
+        <td>{{ f.department }}</td>
+        <td>{{ f.activity }}</td>
+        <td>{{ f.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

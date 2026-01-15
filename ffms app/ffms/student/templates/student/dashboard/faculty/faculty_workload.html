@@ -1,0 +1,17 @@
+{% extends "student/dashboard/faculty/base_faculty.html" %}
+
+{% block faculty_content %}
+<h2 class="page-title">Faculty Workload</h2>
+
+{% for f in workload %}
+<div class="workload-row">
+  <span>{{ f.name }}</span>
+
+  <div class="workload-bar">
+    <div class="fill" style="width: {{ f.activities|add:0 }}0%;"></div>
+  </div>
+
+  <span>{{ f.activities }} activities</span>
+</div>
+{% endfor %}
+{% endblock %}

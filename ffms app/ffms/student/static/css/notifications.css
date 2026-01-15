@@ -1,0 +1,195 @@
+/* =======================
+   GLOBAL
+======================= */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fb;
+}
+
+/* =======================
+   LAYOUT
+======================= */
+.notif-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+.notif-sidebar {
+    width: 280px;
+    background: #0f1e36;
+    color: white;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-link {
+    color: #c7d2fe;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.notif-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* PROGRAM CARD */
+.program-card {
+    background: #15284a;
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.program-card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.program-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* MENU */
+.notif-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notif-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+.notif-menu a:hover,
+.notif-menu a.active {
+    background: #2563eb;
+}
+
+/* BADGE */
+.badge {
+    background: #1e40af;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* =======================
+   CONTENT AREA
+======================= */
+.notif-content {
+    flex: 1;
+    padding: 40px;
+    background: #ffffff;
+}
+
+/* =======================
+   NOTIFICATION HUB
+======================= */
+.notification-hub {
+    max-width: 900px;
+}
+
+.hub-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.hub-subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* =======================
+   EMPTY STATE (CENTER)
+======================= */
+.center-empty {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.center-icon {
+    width: 72px;
+    margin-bottom: 20px;
+}
+
+.center-empty h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.center-empty p {
+    color: #6b7280;
+    max-width: 420px;
+    margin: 0 auto 20px;
+}
+
+/* BUTTON */
+.primary-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #2563eb;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.primary-btn:hover {
+    background: #1e4ed8;
+}
+
+/* =======================
+   COMPOSE FORM
+======================= */
+.compose-form {
+    max-width: 600px;
+}
+
+.compose-form input,
+.compose-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+/* =======================
+   DRAFT / SENT CARDS
+======================= */
+.draft-card,
+.sent-card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.actions {
+    margin-top: 14px;
+}
+
+.actions button {
+    margin-right: 10px;
+}

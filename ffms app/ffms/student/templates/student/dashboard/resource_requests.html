@@ -1,0 +1,73 @@
+{% extends 'student/dashboard/base_dashboard.html' %}
+{% load static %}
+
+
+{% block body_class %}hide-global-sidebar hide-top-nav{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/resource_requests.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="resource-page"></div>
+<div class="resource-wrapper">
+
+  <!-- LEFT FILTER PANEL -->
+
+  <div class="resource-sidebar">
+
+  
+<a href="{% url 'student:admin_dashboard' %}" class="back-link">
+  ← Back to Dashboard
+</a>
+
+  <h3 class="sidebar-title">Resource Requests</h3>
+
+  <button class="filter-btn active" data-type="pending">
+    <span>Pending</span>
+    <span class="badge">2</span>
+  </button>
+
+  <button class="filter-btn" data-type="approved">
+    <span>Approved</span>
+    <span class="badge">1</span>
+  </button>
+
+  <button class="filter-btn" data-type="rejected">
+    <span>Rejected</span>
+    <span class="badge">1</span>
+  </button>
+
+</div>
+
+
+  <!-- RIGHT CONTENT -->
+  <div class="resource-content">
+    <h2 id="section-title">Pending Requests</h2>
+    <div id="request-list"></div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="requestModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h3 id="modal-title"></h3>
+    <p id="modal-desc"></p>
+
+    <div class="modal-meta">
+      <span id="modal-by"></span><br>
+      <span id="modal-date"></span><br>
+      <span id="modal-status"></span>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/resource_requests.js' %}"></script>
+{% endblock %}

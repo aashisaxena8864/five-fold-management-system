@@ -1,0 +1,24 @@
+{% extends "student/dashboard/faculty/base_faculty.html" %}
+
+{% block faculty_content %}
+<h2 class="page-title">Assign Faculty</h2>
+
+<form class="assign-form">
+  <label>Faculty Name</label>
+  <input type="text" placeholder="Enter faculty name">
+
+  <label>Five Fold</label>
+  <select>
+    <option>Physical</option>
+    <option>Aesthetic</option>
+    <option>Practical</option>
+    <option>Moral</option>
+    <option>Intellectual</option>
+  </select>
+
+  <label>Activity</label>
+  <input type="text" placeholder="Eg. Basketball">
+
+  <button type="submit">Assign Faculty</button>
+</form>
+{% endblock %}

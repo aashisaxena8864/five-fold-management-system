@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Notifications{% endblock %}</title>
+
+    <!-- ✅ NOTIFICATIONS CSS ONLY -->
+    <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
+</head>
+
+<body>
+
+<div class="notif-wrapper">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="notif-sidebar">
+        <a class="back-link" href="{% url 'student:admin_dashboard' %}">
+            ← Back to Dashboard
+        </a>
+
+        <h2 class="notif-title">Notifications</h2>
+
+        <nav class="notif-menu">
+            <a href="{% url 'student:notifications_compose' %}"
+               class="{% if active == 'compose' %}active{% endif %}">
+                ✏️ Compose
+            </a>
+
+            <a href="{% url 'student:notifications_drafts' %}"
+               class="{% if active == 'drafts' %}active{% endif %}">
+                📁 Drafts <span class="badge">1</span>
+            </a>
+
+            <a href="{% url 'student:notifications_sent' %}"
+               class="{% if active == 'sent' %}active{% endif %}">
+                📤 Sent <span class="badge">1</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- RIGHT CONTENT -->
+    <main class="notif-content">
+        {% if active == "hub" %}
+    <h1 class="hub-title">🔔 Notification Hub</h1>
+    <p class="hub-subtitle">
+        Manage all notifications 
+    </p>
+{% endif %}
+
+        {% block notification_content %}{% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>

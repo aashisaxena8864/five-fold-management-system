@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% block extra_css %}{% endblock %}
+
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+
+<!-- TOP NAV -->
+<div class="top-nav">
+    <div class="left">
+        <h2>Banasthali Vidyapith</h2>
+        <a href="#">Home</a>
+        <a href="#">Fivefold System</a>
+        <a href="#">Dimensions</a>
+        <a href="#">Stories</a>
+        <a href="#">Get Started</a>
+        <a href="#">About Fivefold</a>
+        <a class="active">Dashboard</a>
+    </div>
+    <div class="right">
+         <span>priya_verma</span>
+        <img class="avatar" src="https://api.dicebear.com/7.x/thumbs/svg?seed=Aashi">
+    </div>
+</div>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a class="active">Dashboard</a>
+        <a href="{% url 'student:admin_students' %}">Students</a>
+         <a href="{% url 'student:admin_faculty' %}">Faculty</a>
+
+        <a>Activities & Events</a>
+        <a href="{% url 'student:resource_requests' %}">
+    Resource Requests
+</a>
+
+        <a href="{% url 'student:notifications' %}">Notifications</a>
+        <a href="{% url 'student:feedback' %}">
+    Feedback
+</a>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+<!-- SLIDE PANEL (GLOBAL) -->
+<div id="viewPanel" class="panel">
+    <div class="panel-content">
+        <span class="close-btn" onclick="closePanel()">×</span>
+        <h3 id="panelTitle"></h3>
+        <p id="panelBody"></p>
+    </div>
+</div>
+
+<!-- GLOBAL JS -->
+<script>
+function openPanel(title, body){
+    document.getElementById("panelTitle").innerText = title;
+    document.getElementById("panelBody").innerText = body;
+    document.getElementById("viewPanel").classList.add("open");
+}
+
+function closePanel(){
+    document.getElementById("viewPanel").classList.remove("open");
+}
+
+function approve(btn){
+    const card = btn.closest(".event-card");
+    card.querySelector(".status").innerText = "✔ Approved";
+    card.querySelector(".status").className = "status approved";
+    disableButtons(card);
+}
+
+function reject(btn){
+    const card = btn.closest(".event-card");
+    card.querySelector(".status").innerText = "✖ Rejected";
+    card.querySelector(".status").className = "status rejected";
+    disableButtons(card);
+}
+
+function disableButtons(card){
+    card.querySelectorAll("button").forEach(b => b.disabled = true);
+}
+</script>
+
+{% block extra_js %}{% endblock %}
+</body>
+
+</html>

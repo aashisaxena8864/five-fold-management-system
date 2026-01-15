@@ -1,0 +1,129 @@
+{% extends "student/dashboard/base_dashboard.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat"><h4>Pending Requests</h4><b>12</b></div>
+    <div class="stat"><h4>Upcoming Events</h4><b>8</b></div>
+    <div class="stat"><h4>Unread Alerts</h4><b>3</b></div>
+    <div class="stat"><h4>Feedback</h4><b>27</b></div>
+</div>
+
+<div class="grid">
+
+<!-- LEFT -->
+<div>
+<div class="card">
+<h3>Upcoming Events & Activities</h3>
+
+<div class="event-card">
+<h4>Science Fair 2025</h4>
+<p>Mar 20, 10:00 AM • Main Hall</p>
+<div class="event-actions">
+<button class="btn view-btn"
+onclick="openPanel(
+'Science Fair 2025',
+'Date: Mar 20, 10:00 AM\nVenue: Main Hall'
+)">View</button>
+
+<button class="btn approve-btn" onclick="approve(this)">Approve</button>
+<button class="btn reject-btn" onclick="reject(this)">Reject</button>
+</div>
+<div class="status"></div>
+</div>
+
+<div class="event-card">
+<h4>Guest Lecture: AI Ethics</h4>
+<p>Mar 22, 2:00 PM • Auditorium</p>
+<div class="event-actions">
+<button class="btn view-btn"
+onclick="openPanel(
+'Guest Lecture: AI Ethics',
+'Speaker: Industry Expert\nVenue: Auditorium'
+)">View</button>
+
+<button class="btn approve-btn" onclick="approve(this)">Approve</button>
+<button class="btn reject-btn" onclick="reject(this)">Reject</button>
+</div>
+<div class="status"></div>
+</div>
+
+</div>
+
+<div class="card map">
+<h3>Campus Map</h3>
+<iframe src="https://maps.google.com/maps?q=Banasthali%20Vidyapith&t=&z=14&output=embed"></iframe>
+<p style="margin-top:10px;color:#666;font-size:14px;text-align:center;">
+        📍 Banasthali Vidyapith, Tonk, Rajasthan
+    </p>
+</div>
+</div>
+
+<!-- RIGHT -->
+<div>
+
+<div class="card">
+<h3>Faculty Resource Requests</h3>
+
+<div class="event-card">
+<h4>Projector for Lab 3</h4>
+<p>Requested by Dr. Kim</p>
+<div class="event-actions">
+<button class="btn view-btn"
+onclick="openPanel(
+'Projector for Lab 3',
+'Required for Lab 3 practicals'
+)">View</button>
+
+<button class="btn approve-btn" onclick="approve(this)">Approve</button>
+<button class="btn reject-btn" onclick="reject(this)">Reject</button>
+</div>
+<div class="status"></div>
+</div>
+<div class="event-card">
+    <h4>New Computer Systems</h4>
+    <p>Requested by Prof. Sharma</p>
+
+    <div class="event-actions">
+        <button class="btn view-btn"
+            onclick="openPanel(
+                'New Computer Systems',
+                'Request for 10 new systems for Computer Lab 2'
+            )">
+            View
+        </button>
+
+        <button class="btn approve-btn" onclick="approve(this)">Approve</button>
+        <button class="btn reject-btn" onclick="reject(this)">Reject</button>
+    </div>
+
+    <div class="status"></div>
+</div>
+
+</div>
+
+<div class="card">
+    <h3>Notifications & Announcements</h3>
+
+    <div class="event-card">
+        <b>System maintenance tonight 11 PM</b>
+        <p>Sent to all • 2h ago</p>
+    </div>
+
+    <div class="event-card">
+        <b>Course registration closes Friday</b>
+        <p>Students • 1d ago</p>
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

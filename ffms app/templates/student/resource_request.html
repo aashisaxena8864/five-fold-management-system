@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resource Request | FFMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(120deg,#eaf1ff,#f7fbff);
+    min-height:100vh;
+}
+
+/* CARD */
+.container{
+    max-width:700px;
+    margin:40px auto;
+    background:#fff;
+    padding:32px;
+    border-radius:18px;
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    margin-bottom:24px;
+}
+.header h2{
+    color:#2f80ed;
+    margin-bottom:6px;
+}
+.header p{
+    color:#666;
+    font-size:14px;
+}
+
+/* FORM */
+.form-group{ margin-bottom:16px; }
+
+label{
+    font-weight:600;
+    color:#333;
+    display:block;
+    margin-bottom:6px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid #d6e0ff;
+    font-size:14px;
+    color:#333;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#999;
+}
+
+textarea{
+    min-height:90px;
+    resize:none;
+}
+
+/* BUTTON */
+.submit-btn{
+    width:100%;
+    margin-top:14px;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    color:#fff;
+    cursor:pointer;
+    background:linear-gradient(120deg,#2f80ed,#6a5cff);
+    box-shadow:0 10px 25px rgba(47,128,237,.35);
+}
+
+/* ===================== */
+/* CUSTOM DROPDOWNS */
+/* ===================== */
+
+.custom-select{
+    position:relative;
+    width:100%;
+}
+
+.select-trigger{
+    padding:12px 40px 12px 14px;
+    border-radius:10px;
+    border:1px solid #d6e0ff;
+    cursor:pointer;
+    background:#fff;
+    color:#333;
+    position:relative;
+}
+
+/* arrow */
+.select-trigger::after{
+    content:"▾";
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    transition:.2s;
+    color:#555;
+}
+
+/* rotate arrow */
+.custom-select.open .select-trigger::after{
+    transform:translateY(-50%) rotate(180deg);
+}
+
+/* dropdown list */
+.select-options{
+    position:absolute;
+    top:110%;
+    left:0;
+    width:100%;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+    max-height:240px;
+    overflow-y:auto;
+    display:none;
+    z-index:9999;
+}
+
+.custom-select.open .select-options{
+    display:block;
+}
+
+.option{
+    padding:6px 14px;
+    cursor:pointer;
+}
+.option:hover{
+    background:#edf2ff;
+}
+
+.optgroup{
+    padding:6px 14px;
+    font-weight:600;
+    color:#2f80ed;
+    background:#f3f6ff;
+}
+
+/* FOOT NOTE */
+.note{
+    text-align:center;
+    margin-top:8px;
+    font-size:13px;
+    color:#777;
+}
+/* placeholder look for dropdowns */
+.select-trigger.placeholder {
+    color: #999;
+}
+
+/* selected value look */
+.select-trigger.selected {
+    color: #333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h2>📦 Resource Request</h2>
+    <p>Submit a request for Five Fold activities & facilities</p>
+</div>
+
+<form method="POST">
+{% csrf_token %}
+
+<!-- Five Fold -->
+<div class="form-group">
+<label>Five Fold Category</label>
+<div class="custom-select">
+    <div class="select-trigger placeholder">-- Select Five Fold --</div>
+    <div class="select-options">
+        <div class="option">Physical</div>
+        <div class="option">Aesthetic</div>
+        <div class="option">Practical</div>
+        <div class="option">Moral</div>
+        <div class="option">Intellectual</div>
+    </div>
+</div>
+<input type="hidden" name="five_fold">
+</div>
+
+<!-- Resource -->
+<div class="form-group">
+<label>Resource Type</label>
+<div class="custom-select">
+    <div class="select-trigger placeholder">-- Select Resource --</div>
+    <div class="select-options">
+        <div class="optgroup">Physical Fold</div> <div class="option">Yoga Mat</div> <div class="option">Sports Equipment</div> <div class="option">Cricket Kit</div> <div class="option">Hockey Stick</div> <div class="option">Badminton Rackets & Shuttlecocks</div> <div class="option">Swimming Gear</div> <div class="option">Archery Equipment</div> <div class="optgroup">Aesthetic Fold</div> <div class="option">Musical Instruments</div> <div class="option">Sound System</div> <div class="option">Painting Canvas</div> <div class="option">Art Supplies</div> <div class="optgroup">Practical Fold</div> <div class="option">Sewing Machine</div> <div class="option">Embroidery Kit</div> <div class="option">Fabric Material</div> <div class="option">Craft Materials</div> <div class="optgroup">Moral Fold</div> <div class="option">Prayer Books</div> <div class="option">Audio System for Prayers</div> <div class="option">Projector for Moral Sessions</div> <div class="optgroup">Intellectual Fold</div> <div class="option">Projector</div> <div class="option">Whiteboard</div> <div class="option">Reference Books</div> <div class="option">Educational Software</div>
+    </div>
+</div>
+<input type="hidden" name="resource_type">
+</div>
+
+<!-- Quantity -->
+<div class="form-group">
+<label>Quantity</label>
+<input type="number" placeholder="Enter quantity">
+</div>
+
+<!-- Priority -->
+<div class="form-group">
+<label>Priority Level</label>
+<div class="custom-select">
+    <div class="select-trigger placeholder">-- Select Priority --</div>
+    <div class="select-options">
+        <div class="option">LOW</div>
+        <div class="option">MEDIUM</div>
+        <div class="option">HIGH</div>
+        <div class="option">CRITICAL</div>
+    </div>
+</div>
+<input type="hidden" name="priority">
+</div>
+
+<!-- Purpose -->
+<div class="form-group">
+<label>Purpose</label>
+<textarea placeholder="Describe purpose of request..."></textarea>
+</div>
+
+<button class="submit-btn">🚀 Submit Request</button>
+</form>
+
+<div class="note">Requests will be reviewed by administration.</div>
+
+</div>
+
+<script>
+document.querySelectorAll(".custom-select").forEach(dropdown => {
+    const trigger = dropdown.querySelector(".select-trigger");
+    const options = dropdown.querySelectorAll(".option");
+    const hidden = dropdown.nextElementSibling;
+
+    trigger.onclick = () => {
+        document.querySelectorAll(".custom-select").forEach(d => {
+            if (d !== dropdown) d.classList.remove("open");
+        });
+        dropdown.classList.toggle("open");
+    };
+
+    options.forEach(opt => {
+        opt.onclick = () => {
+            trigger.textContent = opt.textContent;
+
+            trigger.classList.remove("placeholder");
+            trigger.classList.add("selected");
+
+            hidden.value = opt.textContent;
+            dropdown.classList.remove("open");
+        };
+    });
+});
+
+document.addEventListener("click", e => {
+    if (!e.target.closest(".custom-select")) {
+        document.querySelectorAll(".custom-select")
+            .forEach(d => d.classList.remove("open"));
+    }
+});
+</script>
+
+
+</body>
+</html>

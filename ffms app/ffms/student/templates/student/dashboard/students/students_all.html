@@ -1,0 +1,26 @@
+{% extends "student/dashboard/students/base_students.html" %}
+
+{% block students_content %}
+
+<h2>All Students</h2>
+
+<table class="students-table">
+  <tr>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>Program</th>
+    <th>Year</th>
+    <th>Status</th>
+  </tr>
+
+  {% for s in students %}
+  <tr>
+    <td>{{ s.name }}</td>
+    <td>{{ s.roll }}</td>
+    <td>{{ s.program }}</td>
+    <td>{{ s.year }}</td>
+    <td>{{ s.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

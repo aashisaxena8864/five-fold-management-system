@@ -1,0 +1,23 @@
+<aside class="faculty-sidebar">
+    <a href="{% url 'student:admin_dashboard' %}" class="sidebar-back">
+        ← Back to Dashboard
+    </a>
+
+    <h3 class="sidebar-title">Faculty Management</h3>
+
+    <a href="{% url 'student:admin_faculty' %}">All Faculty</a>
+    <a href="{% url 'student:faculty_assign' %}">Assign Faculty</a>
+
+    <hr class="sidebar-divider">
+
+    <h4 class="sidebar-section-title">Five Fold</h4>
+    <a href="{% url 'student:faculty_by_fold' 'physical' %}">Physical</a>
+    <a href="{% url 'student:faculty_by_fold' 'aesthetic' %}">Aesthetic</a>
+    <a href="{% url 'student:faculty_by_fold' 'practical' %}">Practical</a>
+    <a href="{% url 'student:faculty_by_fold' 'moral' %}">Moral</a>
+    <a href="{% url 'student:faculty_by_fold' 'intellectual' %}">Intellectual</a>
+
+    <hr class="sidebar-divider">
+
+    <a href="{% url 'student:faculty_workload' %}">Faculty Workload</a>
+</aside>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Dashboard | FFMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", sans-serif;
+}
+
+body{
+    background:linear-gradient(120deg,#eef3ff,#f9fbff);
+    color:#333;
+}
+
+/* ===== GLOBAL LINKS ===== */
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ===== LAYOUT ===== */
+.wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+    width:260px;
+    background:linear-gradient(180deg,#2f80ed,#6a5cff);
+    padding:30px 20px;
+    color:#fff;
+}
+
+.sidebar h2{
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a{
+    background:rgba(255,255,255,0.18);
+}
+
+/* ===== MAIN ===== */
+.main{
+    flex:1;
+    padding:35px;
+}
+
+/* ===== TOPBAR ===== */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.top-left h2{
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.top-left p{
+    color:#777;
+    font-size:14px;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+/* ===== NOTIFICATION ===== */
+.notification{
+    font-size:22px;
+    position:relative;
+    cursor:pointer;
+}
+
+.notification span{
+    position:absolute;
+    top:-6px;
+    right:-8px;
+    background:#ff4d4f;
+    color:white;
+    font-size:11px;
+    padding:3px 6px;
+    border-radius:50%;
+}
+/* ===== NOTIFICATION PANEL ===== */
+.notify-panel{
+    position:fixed;
+    top:0;
+    right:-380px;
+    width:360px;
+    height:100vh;
+    background:#fff;
+    box-shadow:-8px 0 25px rgba(0,0,0,0.15);
+    padding:20px;
+    transition:0.4s ease;
+    z-index:999;
+    overflow-y:auto;
+}
+
+.notify-panel.active{
+    right:0;
+}
+
+.notify-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.notify-header h3{
+    font-weight:700;
+}
+
+.close-panel{
+    cursor:pointer;
+    font-size:18px;
+}
+
+.notify-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:12px;
+    border-left:5px solid transparent;
+}
+
+.notify-item.unread{
+    background:#eef4ff;
+    border-color:#2f80ed;
+}
+
+.notify-item.read{
+    background:#f7f7f7;
+    border-color:#bbb;
+}
+
+.notify-item p{
+    margin:6px 0;
+    font-size:14px;
+}
+
+.notify-item small{
+    color:#777;
+}
+
+.close-item{
+    cursor:pointer;
+    font-weight:bold;
+    color:#999;
+}
+/* ===== PROFILE ===== */
+.profile a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+}
+
+.profile img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:2px solid #2f80ed;
+}
+
+/* ===== GRID ===== */
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:28px;
+}
+
+/* ===== CARDS ===== */
+.card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    margin-bottom:22px;
+}
+
+.card h3{
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+    background:linear-gradient(120deg,#2f80ed,#6a5cff);
+    color:white;
+    border:none;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+}
+
+.btn.secondary{
+    background:#edf2ff;
+    color:#2f80ed;
+}
+
+/* ===== EVENTS ===== */
+.event{
+    border:1px solid #eef1f8;
+    padding:16px;
+    border-radius:14px;
+    margin-bottom:15px;
+}
+
+.badge{
+    font-size:12px;
+    padding:5px 12px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+.open{background:#e6f4ff;color:#2f80ed;}
+.registered{background:#e9f9ef;color:#27ae60;}
+.closing{background:#fff4db;color:#f2994a;}
+
+/* ===== ATTENDANCE ===== */
+.circle{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:conic-gradient(#2f80ed 72%, #e0e0e0 0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    font-weight:700;
+    margin:auto;
+}
+
+/* ===== NOTIFICATIONS ===== */
+.notification-item{
+    border-bottom:1px solid #eee;
+    padding:12px 0;
+}
+
+.notification-item:last-child{
+    border:none;
+}
+
+.notification-item small{
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- ===== SIDEBAR ===== -->
+    <div class="sidebar">
+        <h2>Five Fold</h2>
+        <ul>
+            <li class="active"><a href="{% url 'student:student_dashboard' %}">🏠 Dashboard</a></li>
+            <li><a href="{% url 'student:student_profile' %}">👤 Profile</a></li>
+            <li><a href="{% url 'student:student_activities' %}">🎯 Activities</a></li>
+            <li><a href="{% url 'student:student_attendance' %}">📊 Attendance</a></li>
+            <li><a href="{% url 'student:media_gallery' %}">🗺 Media Gallery</a></li>
+            <li>
+    <a href="{% url 'student:student_feedback' %}">
+        💬 Feedback / Support
+    </a>
+          </li>
+          <li><a href="{% url 'student:logout' %}">🚪 Logout</a></li>
+            <li><a href="{% url 'student:student_settings' %}">⚙ Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="top-left">
+                <h2>Welcome back, Aashi 👋</h2>
+                <p>Friday, March 21, 2025</p>
+            </div>
+
+            <div class="top-right">
+                <div class="notification" onclick="toggleNotifications()">
+    🔔 <span>3</span>
+</div>
+
+                <div class="profile">
+                    <a href="{% url 'student:student_profile' %}">
+                        <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=Aashi" alt="Profile">
+                        Aashi Saxena
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="grid">
+
+            <!-- LEFT -->
+            <div>
+
+                <div class="card">
+                    <button class="btn">Register for Event</button>
+                    <button class="btn secondary">View Attendance</button>
+                </div>
+
+                <div class="card">
+                    <h3>Upcoming Events</h3>
+
+                    <div class="event">
+                        <span class="badge open">Open</span>
+                        <h4>Leadership Workshop</h4>
+                        <p>📅 Apr 02, 10:00 AM | 📍 Hall A</p>
+                        <button class="btn">Register</button>
+                        <button class="btn secondary">View Details</button>
+                    </div>
+
+                    <div class="event">
+                        <span class="badge registered">Registered</span>
+                        <h4>Community Service Day</h4>
+                        <p>📅 Apr 05, 08:30 AM | 📍 City Park</p>
+                        <button class="btn secondary">View Details</button>
+                    </div>
+
+                    <div class="event">
+                        <span class="badge closing">Closing Soon</span>
+                        <h4>Career Guidance Talk</h4>
+                        <p>📅 Apr 07, 02:00 PM | 📍 Auditorium</p>
+                        <button class="btn">Register</button>
+                    </div>
+                </div>
+
+                <div class="card">
+    <h3>Campus Map</h3>
+
+    <iframe
+        iframe
+        src="https://maps.google.com/maps?q=Banasthali%20Vidyapith&t=&z=14&output=embed"
+        width="100%" height="300"
+        style="border:none;border-radius:14px">
+    </iframe>
+
+    <p style="margin-top:10px;color:#666;font-size:14px;text-align:center;">
+        📍 Banasthali Vidyapith, Tonk, Rajasthan
+    </p>
+</div>
+            </div>
+
+            <!-- RIGHT -->
+            <div>
+                <div class="card">
+                    <h3>Attendance Summary</h3>
+                    <div class="circle">72%</div>
+                    <p style="text-align:center;margin-top:12px;">12 absences • 3 late</p>
+                </div>
+
+                <div class="card">
+                    <h3>Recent Notifications</h3>
+                    <div class="notification-item">
+                        <b>Event Reminder</b>
+                        <p>Leadership Workshop starts at 10:00 AM tomorrow.</p>
+                        <small>2h ago</small>
+                    </div>
+                    <div class="notification-item">
+                        <b>Attendance Alert</b>
+                        <p>Your attendance dropped below 75%.</p>
+                        <small>1d ago</small>
+                    </div>
+                    <div class="notification-item">
+                        <b>New Message</b>
+                        <p>Mentor replied to your feedback.</p>
+                        <small>2d ago</small>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Quick Actions</h3>
+                    <button class="btn" style="width:100%;margin-bottom:10px;">Register for Event</button>
+                    <button class="btn secondary" style="width:100%;margin-bottom:10px;">Submit Feedback</button>
+                    <button class="btn secondary" style="width:100%;">View Attendance Details</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- ===== NOTIFICATION SIDE PANEL ===== -->
+<div id="notificationPanel" class="notify-panel">
+    <div class="notify-header">
+        <h3>Notifications</h3>
+        <span class="close-panel" onclick="toggleNotifications()">✖</span>
+    </div>
+
+    <div class="notify-item unread">
+        <div>
+            <b>Event Reminder</b>
+            <p>Leadership Workshop starts at 10:00 AM tomorrow.</p>
+            <small>2h ago</small>
+        </div>
+        <span class="close-item" onclick="removeNotification(this)">✕</span>
+    </div>
+
+    <div class="notify-item unread">
+        <div>
+            <b>Attendance Alert</b>
+            <p>Your attendance dropped below 75%.</p>
+            <small>1d ago</small>
+        </div>
+        <span class="close-item" onclick="removeNotification(this)">✕</span>
+    </div>
+
+    <div class="notify-item read">
+        <div>
+            <b>New Message</b>
+            <p>Mentor replied to your feedback.</p>
+            <small>2d ago</small>
+        </div>
+        <span class="close-item" onclick="removeNotification(this)">✕</span>
+    </div>
+</div>
+<script>
+function toggleNotifications(){
+    document.getElementById("notificationPanel")
+        .classList.toggle("active");
+}
+
+function removeNotification(el){
+    el.parentElement.remove();
+}
+</script>
+
+</body>
+</html>
